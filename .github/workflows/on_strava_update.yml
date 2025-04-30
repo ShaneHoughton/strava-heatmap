@@ -1,0 +1,12 @@
+name: Webhook Trigger
+
+on:
+  repository_dispatch:
+    types: [custom-webhook]
+
+jobs:
+  run-on-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo webhook trigger
+        run: echo "This workflow was triggered by a webhook!"
