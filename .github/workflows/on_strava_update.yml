@@ -1,8 +1,12 @@
 name: Webhook Trigger
 
 on:
-  repository_dispatch:
-    types: [custom-webhook]
+  workflow_dispatch:
+    inputs:
+      example_input:
+        description: "An example input"
+        required: false
+        default: "default value"
 
 jobs:
   run-on-webhook:
