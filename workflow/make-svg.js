@@ -60,10 +60,11 @@ async function createSVGFromArray(activities) {
       _item.activities.length === 0
         ? 1
         : Math.min(_item.activities.length / 3, 1);
+    const squareColor = _item.activities.length === 0 ? "#141C24" : "#fc4c02";
+    const borderColor = _item.activities.length === 0 ? "#242B31" : squareColor;
+    const borderOpacity = Math.min(opacity + 0.2, 1);
     svgContent += `
-      <rect x="${x}" y="${y}" width="${squareSize}" height="${squareSize}" fill="${
-      _item.activities.length === 0 ? "#141C24" : "#fc4c02"
-    }" opacity="${opacity}" rx="3" ry="3">
+      <rect x="${x + 1}" y="${y + 1}" width="${squareSize - 2}" height="${squareSize - 2}" fill="${squareColor}" fill-opacity="${opacity}" rx="3" ry="3" stroke="${borderColor}" stroke-width="2" stroke-opacity="${borderOpacity}">
       <title>${MONTHS[currentMonth]} ${_item.date}</title>
       </rect>
     `;
