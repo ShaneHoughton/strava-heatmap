@@ -108,7 +108,7 @@ async function createSVGFromArray(activities) {
   `;
 
   const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" style="background-color: #1e1e1e;">
       ${svgContent}
     </svg>
   `;
