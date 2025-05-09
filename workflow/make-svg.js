@@ -1,10 +1,15 @@
 import fs from "fs";
 import { getAllActivitiesYearFromToday } from "./get-athlete-activities.js";
 import { MONTHS } from "../constants/index.js";
+import { get } from "http";
 
 const getMonthFromDate = (date) => {
   const monthIndex = parseInt(date.split("-")[1]) - 1;
   return MONTHS[monthIndex];
+};
+const getDayOfWeekFromDate = (date) => {
+  const dayIndex = new Date(date).getDay();
+  return dayIndex; // Sunday is 0, Monday is 1, ..., Saturday is 6
 };
 async function createSVGFromArray(activities) {
   const squareSize = 20;
@@ -12,11 +17,20 @@ async function createSVGFromArray(activities) {
   const squaresPerColumn = 7;
 
   let svgContent = "";
+  console.log(activities[0].date);
+  console.log("Activities length:", activities.length);
+  console.log(activities[activities.length - 1].date);
   let currentMonth = getMonthFromDate(activities[0].date);
   console.log("Current month index:", currentMonth);
+  let rowIndex = getDayOfWeekFromDate(activities[0].date);
+  console.log("Row index:", rowIndex);
   activities.forEach((_item, index) => {
-    const column = Math.floor(index / squaresPerColumn) + 2;
-    const row = index % squaresPerColumn;
+    const column =
+      Math.floor(
+        (index + getDayOfWeekFromDate(activities[0].date)) / squaresPerColumn
+      ) + 2;
+    const row =
+      (index + getDayOfWeekFromDate(activities[0].date)) % squaresPerColumn;
 
     const x = column * (squareSize + spacing);
     const y = row * (squareSize + spacing) + 30;
@@ -37,10 +51,19 @@ async function createSVGFromArray(activities) {
       </text>
       `;
     }
-
-    const opacity = Math.min(_item.activities.length / 3, 1);
+    if (getDayOfWeekFromDate(_item.date) === 6) {
+      console.log(_item.date);
+      rowIndex = 0; // Reset rowIndex to start at the top of the next column
+      // columnIndex++; // Move to the next column
+    }
+    const opacity =
+      _item.activities.length === 0
+        ? 1
+        : Math.min(_item.activities.length / 3, 1);
     svgContent += `
-      <rect x="${x}" y="${y}" width="${squareSize}" height="${squareSize}" fill="#fc4c02" opacity="${opacity}" rx="3" ry="3">
+      <rect x="${x}" y="${y}" width="${squareSize}" height="${squareSize}" fill="${
+      _item.activities.length === 0 ? "#141C24" : "#fc4c02"
+    }" opacity="${opacity}" rx="3" ry="3">
       <title>${MONTHS[currentMonth]} ${_item.date}</title>
       </rect>
     `;
@@ -67,16 +90,16 @@ async function createSVGFromArray(activities) {
       `;
 
   const columns = Math.ceil(activities.length / squaresPerColumn);
-  const width = (columns + 3) * (squareSize + spacing);
+  const width = (columns + 3) * (squareSize + spacing) + 100;
   const height = squaresPerColumn * (squareSize + spacing) + 100;
 
-  const legendXStart = width - (5 * (squareSize + spacing)) - 250; // Start 10px from the right edge
+  const legendXStart = width - 5 * (squareSize + spacing) - 250; // Start 10px from the right edge
   const legendY = height - (squareSize + spacing) - 10; // Start 10px from the bottom edge
 
-   svgContent += `
+  svgContent += `
       <text x="${legendXStart - 50}" y="${
-     legendY + 17
-   }" font-size="22" fill="white" text-anchor="start" font-family="Open Sans">
+    legendY + 17
+  }" font-size="22" fill="white" text-anchor="start" font-family="Open Sans">
         Less
       </text>
      `;
@@ -108,10 +131,18 @@ async function createSVGFromArray(activities) {
   `;
 
   const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" style="background-color: #1e1e1e;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
+    <defs>
+      <clipPath id="rounded-border">
+        <rect width="${width}" height="${height}" rx="10" ry="10" />
+      </clipPath>
+    </defs>
+    <g clip-path="url(#rounded-border)">
+      <rect width="${width}" height="${height}" fill="#0D1117" />
       ${svgContent}
-    </svg>
-  `;
+    </g>
+  </svg>
+`;
 
   return svg.trim();
 }
