@@ -1,10 +1,17 @@
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    return res.status(200).json({ message: "Hello" });
+    const hubChallenge = req.query["hub.challenge"];
+    if (hubChallenge) {
+      return res.status(200).json({ "hub.challenge": hubChallenge });
+    } else {
+      return res.status(400).json({ message: "Missing hub.challenge" });
+    }
   }
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method Not Allowed" });
   }
+
+  console.log(req.body);
 
   const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // Add this to Vercel env vars
   const REPO_API_URL = process.env.REPO_API_URL; // Add this to Vercel env vars
@@ -21,8 +28,6 @@ export default async function handler(req, res) {
       ref: REF,
     }),
   });
-
-  console.log(response)
 
   if (response.ok) {
     res.status(200).json({ message: "Workflow triggered successfully" });
