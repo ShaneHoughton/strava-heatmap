@@ -18,7 +18,7 @@ jobs:
           STRAVA_SECRET: ${{ secrets.STRAVA_SECRET }}
           STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
         run: |
-          chmod +x ./workflow/make-svg
+          chmod +x ./workflow/make-svg.js
           ./workflow/make-svg
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
