@@ -1,7 +1,16 @@
 import fs from "fs";
 import { getAllActivitiesYearFromToday } from "./get-athlete-activities.js";
 import { MONTHS } from "../constants/index.js";
-import { get } from "http";
+
+const X_OFFSET = 50;
+const Y_OFFSET = 50;
+const FONT_FAMILY =
+  "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
+
+const SQUARE_SIZE = 20;
+const SPACING = 5;
+const SQUARES_PER_COLUMN = 7;
+const MOST_KUDOS = 30;
 
 const getMonthFromDate = (date) => {
   const monthIndex = parseInt(date.split("-")[1]) - 1;
@@ -9,12 +18,17 @@ const getMonthFromDate = (date) => {
 };
 const getDayOfWeekFromDate = (date) => {
   const dayIndex = new Date(date).getDay();
-  return dayIndex; // Sunday is 0, Monday is 1, ..., Saturday is 6
+  return dayIndex + 1;
+};
+
+const calculateColumn = (index) => {
+  return Math.floor(index / SQUARES_PER_COLUMN) + 2;
+};
+
+const calculateRow = (index) => {
+  return index % SQUARES_PER_COLUMN;
 };
 async function createSVGFromArray(activities) {
-  const squareSize = 20;
-  const spacing = 5;
-  const squaresPerColumn = 7;
 
   let svgContent = "";
   console.log(activities[0].date);
@@ -25,15 +39,18 @@ async function createSVGFromArray(activities) {
   let rowIndex = getDayOfWeekFromDate(activities[0].date);
   console.log("Row index:", rowIndex);
   activities.forEach((_item, index) => {
-    const column =
-      Math.floor(
-        (index + getDayOfWeekFromDate(activities[0].date)) / squaresPerColumn
-      ) + 2;
-    const row =
-      (index + getDayOfWeekFromDate(activities[0].date)) % squaresPerColumn;
+    const dayActivities = _item.activities.sort((a, b) => b.kudos_count - a.kudos_count);
+    const mostKudoedActivity = dayActivities[0] || { kudos: 0 }; // fix
 
-    const x = column * (squareSize + spacing);
-    const y = row * (squareSize + spacing) + 30;
+    if (index === 0) {
+      console.log('>>>', mostKudoedActivity);
+    }
+    const column =
+      calculateColumn(index + getDayOfWeekFromDate(activities[0].date)) + 2;
+    const row = calculateRow(index + getDayOfWeekFromDate(activities[0].date));
+
+    const x = column * (SQUARE_SIZE + SPACING);
+    const y = row * (SQUARE_SIZE + SPACING) + Y_OFFSET;
 
     const activityMonth = getMonthFromDate(_item.date);
 
@@ -41,12 +58,13 @@ async function createSVGFromArray(activities) {
       currentMonth = activityMonth;
       console.log("Current month changed:", currentMonth);
 
-      const column = Math.floor(index / squaresPerColumn) + 2;
-      const x = column * (squareSize + spacing) + 1;
-      const y = 18; // position above the column
+      const column = Math.floor(index / SQUARES_PER_COLUMN) + 2;
+      const x =
+        column * (SQUARE_SIZE + SPACING) + X_OFFSET + SQUARE_SIZE + 1.5 * SPACING;
+      const y = Y_OFFSET - 18; // position above the column
 
       svgContent += `
-      <text x="${x}" y="${y}" font-size="22" fill="white" text-anchor="start" font-family="Open Sans">
+      <text x="${x}" y="${y}" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
         ${currentMonth}
       </text>
       `;
@@ -56,51 +74,57 @@ async function createSVGFromArray(activities) {
       rowIndex = 0; // Reset rowIndex to start at the top of the next column
       // columnIndex++; // Move to the next column
     }
-    const opacity =
-      _item.activities.length === 0
-        ? 1
-        : Math.min(_item.activities.length / 3, 1);
+
+    // opacity is based on the number of activities
+    // const opacity =
+    //   _item.activities.length === 0
+    //     ? 1
+    //     : Math.min(_item.activities.length / 3, 1);
+
+    //opacity is based on the kudos of the most kudoed activity
+    const opacity = Math.min(mostKudoedActivity.kudos_count / MOST_KUDOS, 1);
+      
     const squareColor = _item.activities.length === 0 ? "#141C24" : "#fc4c02";
     const borderColor = _item.activities.length === 0 ? "#242B31" : squareColor;
     const borderOpacity = Math.min(opacity + 0.2, 1);
     svgContent += `
-      <rect x="${x + 1}" y="${y + 1}" width="${squareSize - 2}" height="${squareSize - 2}" fill="${squareColor}" fill-opacity="${opacity}" rx="3" ry="3" stroke="${borderColor}" stroke-width="2" stroke-opacity="${borderOpacity}">
+      <rect x="${x + 1}" y="${y + 1}" width="${SQUARE_SIZE - 2}" height="${
+      SQUARE_SIZE - 2
+    }" fill="${squareColor}" fill-opacity="${opacity}" rx="3" ry="3" stroke="${borderColor}" stroke-width="2" stroke-opacity="${borderOpacity}">
       <title>${MONTHS[currentMonth]} ${_item.date}</title>
       </rect>
     `;
   });
 
-  const firstCol = -1;
-
   svgContent += `
-      <text x="${firstCol}" y="${
-    squareSize + spacing + 45
-  }" font-size="22" fill="white" text-anchor="start" font-family="Open Sans">
+      <text x="${X_OFFSET}" y="${
+    SQUARE_SIZE + SPACING + 50
+  }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
         Mon
       </text>
-      <text x="${firstCol}" y="${
-    3 * (squareSize + spacing) + 45
-  }" font-size="22" fill="white" text-anchor="start" font-family="Open Sans">
+      <text x="${X_OFFSET}" y="${
+    3 * (SQUARE_SIZE + SPACING) + 50
+  }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
         Wed
       </text>
-      <text x="${firstCol}" y="${
-    5 * (squareSize + spacing) + 45
-  }" font-size="22" fill="white" text-anchor="start" font-family="Open Sans">
+      <text x="${X_OFFSET}" y="${
+    5 * (SQUARE_SIZE + SPACING) + 50
+  }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
         Fri
       </text>
       `;
 
-  const columns = Math.ceil(activities.length / squaresPerColumn);
-  const width = (columns + 3) * (squareSize + spacing) + 100;
-  const height = squaresPerColumn * (squareSize + spacing) + 100;
+  const columns = Math.ceil(activities.length / SQUARES_PER_COLUMN);
+  const width = (columns + 3) * (SQUARE_SIZE + SPACING) + 100;
+  const height = SQUARES_PER_COLUMN * (SQUARE_SIZE + SPACING) + 100;
 
-  const legendXStart = width - 5 * (squareSize + spacing) - 250; // Start 10px from the right edge
-  const legendY = height - (squareSize + spacing) - 10; // Start 10px from the bottom edge
+  const legendXStart = width - 5 * (SQUARE_SIZE + SPACING) - 250; // Start 10px from the right edge
+  const legendY = height - (SQUARE_SIZE + SPACING) - 10; // Start 10px from the bottom edge
 
   svgContent += `
       <text x="${legendXStart - 50}" y="${
     legendY + 17
-  }" font-size="22" fill="white" text-anchor="start" font-family="Open Sans">
+  }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
         Less
       </text>
      `;
@@ -108,25 +132,27 @@ async function createSVGFromArray(activities) {
   svgContent += `
       <text x="${legendXStart - 50}" y="${
     legendY + 17
-  }" font-size="22" fill="white" text-anchor="start" font-family="Open Sans">
+  }" font-size="22" fill="white" text-anchor="start" ffont-family="${FONT_FAMILY}">
         Less
       </text>
   `;
 
   for (let i = 0; i < 5; i++) {
-    const x = legendXStart + i * (squareSize + spacing);
+    const x = legendXStart + i * (SQUARE_SIZE + SPACING);
     const y = legendY;
     svgContent += `
-      <rect x="${x}" y="${y}" width="${squareSize}" height="${squareSize}" fill="#fc4c02" opacity="${(i + 1) / 5}" rx="3" ry="3">
+      <rect x="${x}" y="${y}" width="${SQUARE_SIZE}" height="${SQUARE_SIZE}" fill="#fc4c02" opacity="${
+      (i + 1) / 5
+    }" rx="3" ry="3">
       <title>Legend ${i + 1}</title>
       </rect>
     `;
   }
 
   svgContent += `
-      <text x="${legendXStart + 5 * (squareSize + spacing)}" y="${
+      <text x="${legendXStart + 5 * (SQUARE_SIZE + SPACING)}" y="${
     legendY + 17
-  }" font-size="22" fill="white" text-anchor="start" font-family="Open Sans">
+  }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
         More activities
       </text>
   `;
