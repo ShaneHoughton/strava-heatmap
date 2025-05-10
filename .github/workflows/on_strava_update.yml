@@ -12,14 +12,20 @@ jobs:
   run-on-webhook:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo webhook trigger
+      - name: setup node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Echo webhook trigger'
         env:
           STRAVA_ID: ${{ vars.STRAVA_ID }}
           STRAVA_SECRET: ${{ secrets.STRAVA_SECRET }}
           STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
         run: |
-          chmod +x ./workflow/make-svg.js
-          ./workflow/make-svg
+          npm run build
+
+      - name: Commit and push updated SVG
+        run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
