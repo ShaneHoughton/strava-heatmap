@@ -12,6 +12,9 @@ jobs:
   run-on-webhook:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: setup node.js
         uses: actions/setup-node@v4
         with:
