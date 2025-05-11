@@ -1,5 +1,5 @@
 import fs from "fs";
-import { getAllActivitiesYearFromToday } from "./get-athlete-activities.js";
+import { getAllActivitiesYearFromToday as getDaysWithActivities } from "./get-athlete-activities.js";
 import { MONTHS } from "../constants/index.js";
 
 const X_OFFSET = 50;
@@ -11,6 +11,8 @@ const SQUARE_SIZE = 20;
 const SPACING = 5;
 const SQUARES_PER_COLUMN = 7;
 const MOST_KUDOS = 30;
+
+const BACKGROUND_COLOR = "#0D1117";
 
 const getMonthFromDate = (date) => {
   const monthIndex = parseInt(date.split("-")[1]) - 1;
@@ -31,20 +33,13 @@ const calculateRow = (index) => {
 async function createSVGFromArray(activities) {
 
   let svgContent = "";
-  console.log(activities[0].date);
-  console.log("Activities length:", activities.length);
-  console.log(activities[activities.length - 1].date);
   let currentMonth = getMonthFromDate(activities[0].date);
-  console.log("Current month index:", currentMonth);
   let rowIndex = getDayOfWeekFromDate(activities[0].date);
-  console.log("Row index:", rowIndex);
+  
   activities.forEach((_item, index) => {
-    const dayActivities = _item.activities.sort((a, b) => b.kudos_count - a.kudos_count);
+    const dayActivities = (_item.activities || []).sort((a, b) => b.kudos_count - a.kudos_count);
     const mostKudoedActivity = dayActivities[0] || { kudos: 0 }; // fix
 
-    if (index === 0) {
-      console.log('>>>', mostKudoedActivity);
-    }
     const column =
       calculateColumn(index + getDayOfWeekFromDate(activities[0].date)) + 2;
     const row = calculateRow(index + getDayOfWeekFromDate(activities[0].date));
@@ -71,8 +66,7 @@ async function createSVGFromArray(activities) {
     }
     if (getDayOfWeekFromDate(_item.date) === 6) {
       console.log(_item.date);
-      rowIndex = 0; // Reset rowIndex to start at the top of the next column
-      // columnIndex++; // Move to the next column
+      rowIndex = 0; // reset rowIndex to start at the top of the next column
     }
 
     // opacity is based on the number of activities
@@ -82,7 +76,9 @@ async function createSVGFromArray(activities) {
     //     : Math.min(_item.activities.length / 3, 1);
 
     //opacity is based on the kudos of the most kudoed activity
-    const opacity = Math.min(mostKudoedActivity.kudos_count / MOST_KUDOS, 1);
+    const opacity = isNaN(Math.min(mostKudoedActivity.kudos_count / MOST_KUDOS, 1)) 
+      ? 0 
+      : Math.min(mostKudoedActivity.kudos_count / MOST_KUDOS, 1);
       
     const squareColor = _item.activities.length === 0 ? "#141C24" : "#fc4c02";
     const borderColor = _item.activities.length === 0 ? "#242B31" : squareColor;
@@ -98,17 +94,17 @@ async function createSVGFromArray(activities) {
 
   svgContent += `
       <text x="${X_OFFSET}" y="${
-    SQUARE_SIZE + SPACING + 50
+    SQUARE_SIZE + SPACING + 68
   }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
         Mon
       </text>
       <text x="${X_OFFSET}" y="${
-    3 * (SQUARE_SIZE + SPACING) + 50
+    3 * (SQUARE_SIZE + SPACING) + 68
   }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
         Wed
       </text>
       <text x="${X_OFFSET}" y="${
-    5 * (SQUARE_SIZE + SPACING) + 50
+    5 * (SQUARE_SIZE + SPACING) + 68
   }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
         Fri
       </text>
@@ -129,14 +125,6 @@ async function createSVGFromArray(activities) {
       </text>
      `;
 
-  svgContent += `
-      <text x="${legendXStart - 50}" y="${
-    legendY + 17
-  }" font-size="22" fill="white" text-anchor="start" ffont-family="${FONT_FAMILY}">
-        Less
-      </text>
-  `;
-
   for (let i = 0; i < 5; i++) {
     const x = legendXStart + i * (SQUARE_SIZE + SPACING);
     const y = legendY;
@@ -153,7 +141,7 @@ async function createSVGFromArray(activities) {
       <text x="${legendXStart + 5 * (SQUARE_SIZE + SPACING)}" y="${
     legendY + 17
   }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
-        More activities
+        More kudos
       </text>
   `;
 
@@ -165,7 +153,7 @@ async function createSVGFromArray(activities) {
       </clipPath>
     </defs>
     <g clip-path="url(#rounded-border)">
-      <rect width="${width}" height="${height}" fill="#0D1117" />
+      <rect width="${width}" height="${height}" fill="${BACKGROUND_COLOR}" />
       ${svgContent}
     </g>
   </svg>
@@ -174,7 +162,7 @@ async function createSVGFromArray(activities) {
   return svg.trim();
 }
 
-const activities = await getAllActivitiesYearFromToday(); // or Array(20).fill(null) for testing
+const activities = await getDaysWithActivities();
 
 const svgString = await createSVGFromArray(activities);
 

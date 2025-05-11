@@ -11,10 +11,6 @@
         May
       </text>
       
-      <rect x="101" y="201" width="18" height="18" fill="#fc4c02" fill-opacity="0.7333333333333333" rx="3" ry="3" stroke="#fc4c02" stroke-width="2" stroke-opacity="0.9333333333333333">
-      <title>undefined 2024-05-11</title>
-      </rect>
-    
       <rect x="126" y="51" width="18" height="18" fill="#fc4c02" fill-opacity="0.4" rx="3" ry="3" stroke="#fc4c02" stroke-width="2" stroke-opacity="0.6000000000000001">
       <title>undefined 2024-05-12</title>
       </rect>
@@ -95,7 +91,7 @@
       <title>undefined 2024-05-31</title>
       </rect>
     
-      <text x="202.5" y="32" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+      <text x="177.5" y="32" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
         Jun
       </text>
       
@@ -103,7 +99,7 @@
       <title>undefined 2024-06-01</title>
       </rect>
     
-      <rect x="201" y="51" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="201" y="51" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-06-02</title>
       </rect>
     
@@ -319,7 +315,7 @@
       <title>undefined 2024-07-24</title>
       </rect>
     
-      <rect x="376" y="151" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="376" y="151" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-07-25</title>
       </rect>
     
@@ -327,7 +323,7 @@
       <title>undefined 2024-07-26</title>
       </rect>
     
-      <rect x="376" y="201" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="376" y="201" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-07-27</title>
       </rect>
     
@@ -371,7 +367,7 @@
       <title>undefined 2024-08-05</title>
       </rect>
     
-      <rect x="426" y="101" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="426" y="101" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-08-06</title>
       </rect>
     
@@ -403,11 +399,11 @@
       <title>undefined 2024-08-13</title>
       </rect>
     
-      <rect x="451" y="126" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="451" y="126" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-08-14</title>
       </rect>
     
-      <rect x="451" y="151" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="451" y="151" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-08-15</title>
       </rect>
     
@@ -547,15 +543,15 @@
       <title>undefined 2024-09-17</title>
       </rect>
     
-      <rect x="576" y="126" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="576" y="126" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-09-18</title>
       </rect>
     
-      <rect x="576" y="151" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="576" y="151" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-09-19</title>
       </rect>
     
-      <rect x="576" y="176" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="576" y="176" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-09-20</title>
       </rect>
     
@@ -563,7 +559,7 @@
       <title>undefined 2024-09-21</title>
       </rect>
     
-      <rect x="601" y="51" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="601" y="51" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-09-22</title>
       </rect>
     
@@ -795,7 +791,7 @@
       <title>undefined 2024-11-16</title>
       </rect>
     
-      <rect x="801" y="51" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="801" y="51" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-11-17</title>
       </rect>
     
@@ -843,11 +839,11 @@
       <title>undefined 2024-11-28</title>
       </rect>
     
-      <rect x="826" y="176" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="826" y="176" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-11-29</title>
       </rect>
     
-      <rect x="826" y="201" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="826" y="201" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-11-30</title>
       </rect>
     
@@ -859,15 +855,15 @@
       <title>undefined 2024-12-01</title>
       </rect>
     
-      <rect x="851" y="76" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="851" y="76" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-12-02</title>
       </rect>
     
-      <rect x="851" y="101" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="851" y="101" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-12-03</title>
       </rect>
     
-      <rect x="851" y="126" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="851" y="126" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-12-04</title>
       </rect>
     
@@ -911,7 +907,7 @@
       <title>undefined 2024-12-14</title>
       </rect>
     
-      <rect x="901" y="51" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="901" y="51" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-12-15</title>
       </rect>
     
@@ -919,7 +915,7 @@
       <title>undefined 2024-12-16</title>
       </rect>
     
-      <rect x="901" y="101" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="901" y="101" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-12-17</title>
       </rect>
     
@@ -931,7 +927,7 @@
       <title>undefined 2024-12-19</title>
       </rect>
     
-      <rect x="901" y="176" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="901" y="176" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2024-12-20</title>
       </rect>
     
@@ -995,7 +991,7 @@
       <title>undefined 2025-01-03</title>
       </rect>
     
-      <rect x="951" y="201" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="951" y="201" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2025-01-04</title>
       </rect>
     
@@ -1107,7 +1103,7 @@
       <title>undefined 2025-01-31</title>
       </rect>
     
-      <text x="1077.5" y="32" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+      <text x="1052.5" y="32" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
         Feb
       </text>
       
@@ -1131,7 +1127,7 @@
       <title>undefined 2025-02-05</title>
       </rect>
     
-      <rect x="1076" y="151" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="1076" y="151" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2025-02-06</title>
       </rect>
     
@@ -1179,7 +1175,7 @@
       <title>undefined 2025-02-17</title>
       </rect>
     
-      <rect x="1126" y="101" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="1126" y="101" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2025-02-18</title>
       </rect>
     
@@ -1223,7 +1219,7 @@
       <title>undefined 2025-02-28</title>
       </rect>
     
-      <text x="1177.5" y="32" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+      <text x="1152.5" y="32" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
         Mar
       </text>
       
@@ -1231,7 +1227,7 @@
       <title>undefined 2025-03-01</title>
       </rect>
     
-      <rect x="1176" y="51" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="1176" y="51" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2025-03-02</title>
       </rect>
     
@@ -1315,7 +1311,7 @@
       <title>undefined 2025-03-22</title>
       </rect>
     
-      <rect x="1251" y="51" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="1251" y="51" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2025-03-23</title>
       </rect>
     
@@ -1411,7 +1407,7 @@
       <title>undefined 2025-04-14</title>
       </rect>
     
-      <rect x="1326" y="101" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="1326" y="101" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2025-04-15</title>
       </rect>
     
@@ -1435,7 +1431,7 @@
       <title>undefined 2025-04-20</title>
       </rect>
     
-      <rect x="1351" y="76" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="1351" y="76" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2025-04-21</title>
       </rect>
     
@@ -1495,7 +1491,7 @@
       <title>undefined 2025-05-04</title>
       </rect>
     
-      <rect x="1401" y="76" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="1401" y="76" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
       <title>undefined 2025-05-05</title>
       </rect>
     
@@ -1515,17 +1511,21 @@
       <title>undefined 2025-05-09</title>
       </rect>
     
-      <rect x="1401" y="201" width="18" height="18" fill="#141C24" fill-opacity="NaN" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="NaN">
+      <rect x="1401" y="201" width="18" height="18" fill="#fc4c02" fill-opacity="0.3333333333333333" rx="3" ry="3" stroke="#fc4c02" stroke-width="2" stroke-opacity="0.5333333333333333">
       <title>undefined 2025-05-10</title>
       </rect>
     
-      <text x="50" y="75" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+      <rect x="1426" y="51" width="18" height="18" fill="#141C24" fill-opacity="0" rx="3" ry="3" stroke="#242B31" stroke-width="2" stroke-opacity="0.2">
+      <title>undefined 2025-05-11</title>
+      </rect>
+    
+      <text x="50" y="93" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
         Mon
       </text>
-      <text x="50" y="125" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+      <text x="50" y="143" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
         Wed
       </text>
-      <text x="50" y="175" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+      <text x="50" y="193" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
         Fri
       </text>
       
@@ -1533,10 +1533,6 @@
         Less
       </text>
      
-      <text x="1075" y="257" font-size="22" fill="white" text-anchor="start" ffont-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
-        Less
-      </text>
-  
       <rect x="1125" y="240" width="20" height="20" fill="#fc4c02" opacity="0.2" rx="3" ry="3">
       <title>Legend 1</title>
       </rect>
@@ -1558,7 +1554,7 @@
       </rect>
     
       <text x="1250" y="257" font-size="22" fill="white" text-anchor="start" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
-        More activities
+        More kudos
       </text>
   
     </g>
