@@ -1,6 +1,8 @@
 name: Webhook Trigger
 
 on:
+  schedule:
+    - cron: "0 5 * * *" # runs at 5:00 AM UTC/ 1 am eastern everyday
   workflow_dispatch:
     inputs:
       example_input:
