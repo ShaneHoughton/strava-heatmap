@@ -15,12 +15,15 @@ const MOST_KUDOS = 30;
 const BACKGROUND_COLOR = "#0D1117";
 
 const getMonthFromDate = (date) => {
-  const monthIndex = parseInt(date.split("-")[1]) - 1;
+  // make tz configurable based on activity timezone
+  const monthIndex = new Date(date + "T00:00:00-05:00").getMonth(); // Adjust for Eastern Time
   return MONTHS[monthIndex];
 };
 const getDayOfWeekFromDate = (date) => {
-  const dayIndex = new Date(date).getDay();
-  return dayIndex + 1;
+  const easternDate = new Date(
+    new Date(date).toLocaleString("en-US", { timeZone: "America/New_York" })
+  );
+  return easternDate.getDay() + 1;
 };
 
 const calculateColumn = (index) => {
