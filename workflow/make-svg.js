@@ -31,14 +31,15 @@ const calculateRow = (index) => {
   return index % SQUARES_PER_COLUMN;
 };
 async function createSVGFromArray(activities) {
-
   let svgContent = "";
   let currentMonth = getMonthFromDate(activities[0].date);
   let rowIndex = getDayOfWeekFromDate(activities[0].date);
-  
+
   activities.forEach((_item, index) => {
-    const dayActivities = (_item.activities || []).sort((a, b) => b.kudos_count - a.kudos_count);
-    const mostKudoedActivity = dayActivities[0] || { kudos: 0 }; // fix
+    const dayActivities = (_item.activities || []).sort(
+      (a, b) => b.kudos_count - a.kudos_count
+    );
+    const mostKudoedActivity = dayActivities[0] || { kudos_count: 0 }; // fix
 
     const column =
       calculateColumn(index + getDayOfWeekFromDate(activities[0].date)) + 2;
@@ -49,13 +50,16 @@ async function createSVGFromArray(activities) {
 
     const activityMonth = getMonthFromDate(_item.date);
 
-    if (activityMonth !== currentMonth || index === 0) {
+    if (activityMonth !== currentMonth) {
       currentMonth = activityMonth;
       console.log("Current month changed:", currentMonth);
 
       const column = Math.floor(index / SQUARES_PER_COLUMN) + 2;
       const x =
-        column * (SQUARE_SIZE + SPACING) + X_OFFSET + SQUARE_SIZE + 1.5 * SPACING;
+        column * (SQUARE_SIZE + SPACING) +
+        X_OFFSET +
+        SQUARE_SIZE +
+        1.5 * SPACING;
       const y = Y_OFFSET - 18; // position above the column
 
       svgContent += `
@@ -76,18 +80,20 @@ async function createSVGFromArray(activities) {
     //     : Math.min(_item.activities.length / 3, 1);
 
     //opacity is based on the kudos of the most kudoed activity
-    const opacity = isNaN(Math.min(mostKudoedActivity.kudos_count / MOST_KUDOS, 1)) 
-      ? 0 
+    const opacity = isNaN(
+      Math.min(mostKudoedActivity.kudos_count / MOST_KUDOS, 1)
+    )
+      ? 0
       : Math.min(mostKudoedActivity.kudos_count / MOST_KUDOS, 1);
-      
+
     const squareColor = _item.activities.length === 0 ? "#141C24" : "#fc4c02";
-    const borderColor = _item.activities.length === 0 ? "#242B31" : squareColor;
+    const borderColor = _item.activities.length === 0 ? "#3C4752" : squareColor;
     const borderOpacity = Math.min(opacity + 0.2, 1);
     svgContent += `
       <rect x="${x + 1}" y="${y + 1}" width="${SQUARE_SIZE - 2}" height="${
       SQUARE_SIZE - 2
     }" fill="${squareColor}" fill-opacity="${opacity}" rx="3" ry="3" stroke="${borderColor}" stroke-width="2" stroke-opacity="${borderOpacity}">
-      <title>${MONTHS[currentMonth]} ${_item.date}</title>
+      <title>${_item.date}</title>
       </rect>
     `;
   });
