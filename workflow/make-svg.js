@@ -14,6 +14,7 @@ const MOST_KUDOS = 30;
 
 const BACKGROUND_COLOR = "#0D1117";
 
+
 const getMonthFromDate = (date) => {
   // make tz configurable based on activity timezone
   const monthIndex = new Date(date + "T00:00:00-05:00").getMonth(); // Adjust for Eastern Time
@@ -66,7 +67,7 @@ async function createSVGFromArray(activities) {
       const y = Y_OFFSET - 18; // position above the column
 
       svgContent += `
-      <text x="${x}" y="${y}" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
+      <text x="${x}" y="${y}" font-size="22" fill="#fc4c02" text-anchor="start" font-family="${FONT_FAMILY}">
         ${currentMonth}
       </text>
       `;
@@ -104,17 +105,17 @@ async function createSVGFromArray(activities) {
   svgContent += `
       <text x="${X_OFFSET}" y="${
     SQUARE_SIZE + SPACING + 68
-  }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
+  }" font-size="22" fill="#fc4c02" text-anchor="start" font-family="${FONT_FAMILY}">
         Mon
       </text>
       <text x="${X_OFFSET}" y="${
     3 * (SQUARE_SIZE + SPACING) + 68
-  }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
+  }" font-size="22" fill="#fc4c02" text-anchor="start" font-family="${FONT_FAMILY}">
         Wed
       </text>
       <text x="${X_OFFSET}" y="${
     5 * (SQUARE_SIZE + SPACING) + 68
-  }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
+  }" font-size="22" fill="#fc4c02" text-anchor="start" font-family="${FONT_FAMILY}">
         Fri
       </text>
       `;
@@ -129,7 +130,7 @@ async function createSVGFromArray(activities) {
   svgContent += `
       <text x="${legendXStart - 50}" y="${
     legendY + 17
-  }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
+  }" font-size="22" fill="#fc4c02" text-anchor="start" font-family="${FONT_FAMILY}">
         Less
       </text>
      `;
@@ -149,7 +150,7 @@ async function createSVGFromArray(activities) {
   svgContent += `
       <text x="${legendXStart + 5 * (SQUARE_SIZE + SPACING)}" y="${
     legendY + 17
-  }" font-size="22" fill="white" text-anchor="start" font-family="${FONT_FAMILY}">
+  }" font-size="22" fill="#fc4c02" text-anchor="start" font-family="${FONT_FAMILY}">
         More kudos
       </text>
   `;
@@ -162,7 +163,7 @@ async function createSVGFromArray(activities) {
       </clipPath>
     </defs>
     <g clip-path="url(#rounded-border)">
-      <rect width="${width}" height="${height}" fill="${BACKGROUND_COLOR}" />
+      <rect width="${width}" height="${height}" fill="none" />
       ${svgContent}
     </g>
   </svg>
